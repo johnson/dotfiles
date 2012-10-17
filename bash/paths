@@ -1,2 +1,15 @@
 export PATH="~/bin:~/.bin:/usr/local/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+#---------rvm path-------------------------
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#---------rvm path-------------------------
+
+#---------node js--------------------------
+export NODE_PATH="/usr/local/lib/node_modules"
+#---------node js--------------------------
+
+#---------ada path-------------------------
+export PATH="$PATH:/usr/local/gnat/bin"
+#---------ada path-------------------------
