@@ -80,6 +80,26 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
   # Turn on advanced bash completion if the file exists 
   # Get it here: http://www.caliban.org/bash/index.shtml#completion) or 
   # on OSX: sudo port install bash-completion
+  # or: brew install bash-completion
+  
+  # ==> Downloading http://bash-completion.alioth.debian.org/files/bash-completion-1.3.tar.bz2
+  # ######################################################################## 100.0%
+  # ==> ./configure --prefix=/usr/local/Cellar/bash-completion/1.3
+  # ==> make install
+  # ==> Caveats
+  # Add the following lines to your ~/.bash_profile:
+  #   if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  #     . $(brew --prefix)/etc/bash_completion
+  #   fi
+  # 
+  # Homebrew's own bash completion script has been installed to
+  #   /usr/local/etc/bash_completion.d
+  # ==> Caveats
+  # Bash completion has been installed to:
+  #   /usr/local/etc/bash_completion.d
+  # ==> Summary
+  # /usr/local/Cellar/bash-completion/1.3: 187 files, 1.0M, built in 13 seconds  
+  
   if [ -f /etc/bash_completion ]; then
       . /etc/bash_completion
   fi
@@ -87,8 +107,8 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
     . /opt/local/etc/bash_completion
   fi
 
-  # git completion
-  source ~/cl/bin/git-completion.bash
+  # # git completion
+  # source ~/cl/bin/git-completion.bash
 
   # Add completion to source and .
   complete -F _command source 
@@ -97,9 +117,9 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
 
 
   # Prompts ----------------------------------------------------------
-  #git_dirty_flag() {
-    #git status 2> /dev/null | grep -c : | awk '{if ($1 > 0) print "⚡"}'
-  #}
+  git_dirty_flag() {
+    git status 2> /dev/null | grep -c : | awk '{if ($1 > 0) print "⚡"}'
+  }
 
   prompt_func() {
       previous_return_value=$?;
@@ -108,8 +128,8 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
       else
         prompt="\[\033]0;${USER} ${PWD}\007\]\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_NC}\] "
       fi
-      #prompt="\033]0;${PWD}\007\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_NC}\] "
-      #prompt="\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_YELLOW}\]$(git_dirty_flag)\[${COLOR_NC}\] "
+      # prompt="\033]0;${PWD}\007\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_NC}\] "
+      prompt="\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_YELLOW}\]$(git_dirty_flag)\[${COLOR_NC}\] "
 
       if test $previous_return_value -eq 0
       then
@@ -125,7 +145,7 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
   # export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path 
   # This runs before the prompt and sets the title of the xterm* window.  If you set the title in the prompt
   # weird wrapping errors occur on some systems, so this method is superior
-  #export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/} ${USER}@${HOSTNAME%%.*}"; echo -ne "\007"'  # user@host path
+  # export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/} ${USER}@${HOSTNAME%%.*}"; echo -ne "\007"'  # user@host path
 
   export PS2='> '    # Secondary prompt
   export PS3='#? '   # Prompt 3
