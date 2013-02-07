@@ -1,3 +1,7 @@
-export CC=/usr/bin/gcc-4.2
-export CPP=/usr/bin/cpp-4.2
-export CXX=/usr/bin/g++-4.2 
+# brew update
+# brew install libksba
+# brew tap homebrew/dupes
+# brew install autoconf automake apple-gcc42
+export CC=/usr/local/bin/gcc-4.2
+export CPP=/usr/local/bin/cpp-4.2
+export CXX=/usr/local/bin/g++-4.2
