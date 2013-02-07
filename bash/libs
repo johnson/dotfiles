@@ -1,1 +1,2 @@
+# for mysql, download from mysql.com and install first
 export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"

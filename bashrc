@@ -1,3 +1,25 @@
+# fix
+# dyld: DYLD_ environment variables being ignored because main executable (/usr/bin/sudo) is setuid or setgid
+# set an alternative sudothesudo ()
+thesudo ()
+{
+     # back up the DYLD_* variables
+     local BACK=$DYLD_LIBRARY_PATH
+
+     # unset DYLD_*
+     unset DYLD_LIBRARY_PATH
+
+     # calling sudo
+     /usr/bin/sudo "$@"
+
+     # restore DYLD_* after sudo finished
+     export DYLD_LIBRARY_PATH=$BACK
+}
+# redirect sudo
+alias sudo=thesudo
+
+
+
 # Turn on advanced bash completion if the file exists 
 # Get it here: http://www.caliban.org/bash/index.shtml#completion) or 
 # on OSX: sudo port install bash-completion
